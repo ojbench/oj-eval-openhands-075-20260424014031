@@ -1,6 +1,6 @@
-#include &lt;algorithm&gt;
-#include &lt;cstring&gt;
-#include &lt;vector&gt;
+#include <algorithm>
+#include <cstring>
+#include <vector>
 
 class str
 {
@@ -64,16 +64,16 @@ public:
 		return size;
 	}
 
-	str join(const std::vector&lt;str&gt; &amp;strs) const {
+	str join(const std::vector<str> &strs) const {
 		if (strs.empty()) {
 			return str();
 		}
 		
 		// Calculate total length needed
 		size_t total_len = 0;
-		for (size_t i = 0; i &lt; strs.size(); ++i) {
+		for (size_t i = 0; i < strs.size(); ++i) {
 			total_len += strs[i].len();
-			if (i &lt; strs.size() - 1) {
+			if (i < strs.size() - 1) {
 				total_len += len();  // Add separator length
 			}
 		}
@@ -85,13 +85,13 @@ public:
 		result.data = new char[total_len + 1];
 		
 		char* ptr = result.data;
-		for (size_t i = 0; i &lt; strs.size(); ++i) {
+		for (size_t i = 0; i < strs.size(); ++i) {
 			// Copy string
 			std::strcpy(ptr, strs[i].data);
 			ptr += strs[i].len();
 			
 			// Add separator if not the last string
-			if (i &lt; strs.size() - 1) {
+			if (i < strs.size() - 1) {
 				std::strcpy(ptr, data);
 				ptr += len();
 			}
@@ -103,12 +103,12 @@ public:
 
 	str slice(size_t l, size_t r) const {
 		// Clamp r to size if it's too large
-		if (r &gt; size) {
+		if (r > size) {
 			r = size;
 		}
 		
 		// Handle invalid range
-		if (l &gt;= r) {
+		if (l >= r) {
 			return str();
 		}
 		
